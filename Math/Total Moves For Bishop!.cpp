@@ -1,0 +1,21 @@
+// link https://www.interviewbit.com/problems/total-moves-for-bishop/
+
+int Solution::solve(int a, int b)
+{
+    if (a == 1 || b == 1 || a == 8 || b == 8)
+    {
+        return 7;
+    }
+    else if (a == 2 || b == 2 || a == 7 || b == 7)
+    {
+        return 9;
+    }
+    else if (a == 3 || b == 3 || a == 6 || b == 6)
+    {
+        return 11;
+    }
+    else
+    {
+        return 13;
+    }
+}
