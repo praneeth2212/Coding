@@ -1,43 +1,48 @@
-// link https://www.interviewbit.com/problems/palindrome-list/
+// link https://leetcode.com/problems/reverse-linked-list-ii/description/
 
-ListNode *reverse(ListNode *A)
+class Solution
 {
-    if (A == NULL || A->next == NULL)
-        return A;
-    ListNode *prev = NULL;
-    ListNode *curr = A;
-    while (curr)
+public:
+    ListNode *reverseBetween(ListNode *head, int left, int right)
     {
-        ListNode *temp = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = temp;
+        int length = right - left + 1;
+        if (!head || head->next == NULL || length == 1)
+            return head;
+
+        // finding node at left-1
+        ListNode *curr = head;
+        for (int i = 1; i < left - 1; i++)
+        {
+            if (curr)
+                curr = curr->next;
+            else
+                break;
+        }
+        ListNode *left_half = (left == 1) ? NULL : curr;
+        curr = (left == 1) ? curr : curr->next;
+
+        // finding node at right+1
+        ListNode *right_half = head;
+        for (int i = 1; i <= right; i++)
+        {
+            if (right_half)
+                right_half = right_half->next;
+            else
+                break;
+        }
+        ListNode *prev = right_half;
+
+        while (curr && length)
+        {
+            ListNode *next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+            length--;
+        }
+        if (left_half == NULL)
+            return prev;
+        left_half->next = prev;
+        return head;
     }
-    return prev;
-}
-int Solution::lPalin(ListNode *A)
-{
-    if (A == NULL || A->next == NULL)
-        return 1;
-    ListNode *temp_A = A;
-    int c1 = 0;
-    while (temp_A)
-    {
-        c1++;
-        temp_A = temp_A->next;
-    }
-    int count = c1 / 2 - 1;
-    temp_A = A;
-    while (count--)
-        temp_A = temp_A->next;
-    ListNode *oth_node = reverse(temp_A->next);
-    temp_A->next = NULL;
-    while (oth_node && A)
-    {
-        if (oth_node->val != A->val)
-            return 0;
-        oth_node = oth_node->next;
-        A = A->next;
-    }
-    return 1;
-}
+};
