@@ -29,3 +29,4 @@ string Solution::solve(string A, int B)
     solve2(A, B, 0);
     return ans;
 }
+    
