@@ -22,5 +22,5 @@ TreeNode *help(const vector<int> &A, int start, int end)
 TreeNode *Solution::sortedArrayToBST(const vector<int> &A)
 {
     int n = A.size();
-    return help(A, 0, n - 1);
+    return help(A, 0, n- 1);
 }
