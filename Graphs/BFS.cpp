@@ -6,35 +6,27 @@ public:
     // Function to return Breadth First Traversal of given graph.
     vector<int> bfsOfGraph(int V, vector<int> adj[])
     {
-        // boolean list to mark all the vertices as not visited.
-        vector<bool> vis(V, false);
-        int s = 0;
-        // initially e mark first vertex as visited(true).
-        vis[s] = true;
-        vector<int> res;
-        // creating a queue for BFS and pushing first vertex in queue.
+        // Code here
         queue<int> q;
+        vector<int> ans;
+        vector<int> vis(V + 1, false);
+        int s = 0;
+        vis[s] = 0;
         q.push(s);
         while (!q.empty())
         {
-            // adding front element in output list and popping it from queue.
             int t = q.front();
-            res.push_back(t);
+            ans.push_back(t);
             q.pop();
-
-            // traversing over all the connected components of front element.
-            for (int v : adj[t])
+            for (int i : adj[t])
             {
-                // if they aren't visited, we mark them visited and add to
-                // queue.
-                if (!vis[v])
+                if (!vis[i])
                 {
-                    vis[v] = true;
-                    q.push(v);
+                    q.push(i);
+                    vis[i] = true;
                 }
             }
         }
-        // returning the output list.
-        return res;
+        return ans;
     }
 };
