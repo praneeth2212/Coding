@@ -3,42 +3,35 @@
 class Solution
 {
 public:
-    void DFSUtil(int i, vector<int> adj[], int V, bool vis[],
-                 vector<int> &res)
+    void dfs(int i, vector<int> &ans, vector<bool> &vis, int V, vector<int> adj[])
     {
         if (vis[i])
+        {
             return;
-
-        // marking vertex as visited and adding it to output list.
+        }
         vis[i] = true;
-        res.push_back(i);
-
-        // iterating over connected components of the vertex and if any
-        // of them is not visited then calling the function recursively.
+        ans.push_back(i);
         for (int j : adj[i])
         {
             if (!vis[j])
-                DFSUtil(j, adj, V, vis, res);
+            {
+                dfs(j, ans, vis, V, adj);
+            }
         }
     }
-
     // Function to return a list containing the DFS traversal of the graph.
     vector<int> dfsOfGraph(int V, vector<int> adj[])
     {
-        // using a boolean list to mark all the vertices as not visited.
-        bool vis[V];
-        memset(vis, false, sizeof(vis));
-
-        vector<int> res;
+        // Code here
+        vector<int> ans;
+        vector<bool> vis(V + 1, false);
         for (int i = 0; i < V; i++)
         {
-            // if any vertex isn't visited then calling the function.
             if (!vis[i])
             {
-                DFSUtil(i, adj, V, vis, res);
+                dfs(i, ans, vis, V, adj);
             }
         }
-        // returning the output list.
-        return res;
+        return ans;
     }
-}
+};
