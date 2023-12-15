@@ -29,7 +29,7 @@ public:
     {
         long int mini = -4294967296;
         long int maxi = 4294967295;
-
+        
         return solve(root, mini, maxi);
     }
 };
