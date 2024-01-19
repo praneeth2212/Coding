@@ -9,6 +9,8 @@
         "unordered_set": "cpp",
         "forward_list": "cpp",
         "tuple": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "chrono": "cpp",
+        "functional": "cpp"
     }
 }
