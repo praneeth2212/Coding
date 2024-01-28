@@ -1,8 +1,8 @@
 
-https : // www.codingninjas.com/studio/problems/partition-equal-subset-sum_892980?source=youtube&campaign=striver_dp_videos&utm_source=youtube&utm_medium=affiliate&utm_campaign=striver_dp_videos&leftPanelTabValue=SUBMISSION
+https://www.codingninjas.com/studio/problems/partition-equal-subset-sum_892980?source=youtube&campaign=striver_dp_videos&utm_source=youtube&utm_medium=affiliate&utm_campaign=striver_dp_videos&leftPanelTabValue=SUBMISSION
 
-        bool
-        subsetSumToK(int n, int k, vector<int> &arr)
+
+bool subsetSumToK(int n, int k, vector<int> &arr)
 {
     // Initialize a 2D DP array with dimensions (n x k+1) to store subproblem results
     vector<vector<bool>> dp(n, vector<bool>(k + 1, false));
